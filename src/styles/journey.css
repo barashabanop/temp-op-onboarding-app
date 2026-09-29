@@ -1,0 +1,148 @@
+/* Generic and task-based journey progression. */
+.journey-hero { display: grid; grid-template-columns: 1.5fr .6fr; gap: 30px; align-items: center; padding: 30px; border: 1px solid var(--border); border-radius: 12px; background: radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--team-accent), transparent 82%), transparent 25%), #1b1b1b; }
+
+.journey-hero h1 { max-width: 700px; margin: 12px 0; font-size: 40px; line-height: 1.08; letter-spacing: 0; }
+
+.journey-hero > div:first-child > p:last-child { max-width: 600px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+
+.journey-hero > div:last-child { display: flex; gap: 15px; align-items: center; justify-content: flex-end; }
+
+.journey-hero > div:last-child > span { display: grid; gap: 5px; }
+
+.journey-hero > div:last-child strong { font-size: 12px; }
+
+.journey-hero > div:last-child small { color: #829087; font-size: 8px; }
+
+.journey-track { max-width: 900px; margin: 34px auto 0; }
+
+.journey-level { display: grid; grid-template-columns: 52px 1fr; gap: 16px; min-height: 245px; }
+
+.journey-node { position: relative; display: flex; justify-content: center; }
+
+.journey-node > span, .journey-node > svg { position: relative; z-index: 1; display: grid; width: 38px; height: 38px; padding: 11px; border: 1px solid var(--border-strong); border-radius: 50%; background: #171717; color: #738078; font: 700 9px ui-monospace, monospace; text-align: center; }
+
+.journey-node > span { place-items: center; padding: 0; }
+
+.journey-node i { position: absolute; top: 38px; bottom: 0; width: 1px; background: var(--border); }
+
+.journey-level:last-child .journey-node i { display: none; }
+
+.journey-level.is-unlocked .journey-node > span, .journey-level.is-complete .journey-node > svg { border-color: var(--team-accent); color: var(--team-accent); box-shadow: 0 0 22px color-mix(in srgb, var(--team-accent), transparent 84%); }
+
+.journey-level.is-complete .journey-node > svg { background: var(--team-accent); color: #0a3022; }
+
+.journey-level.is-complete .journey-node i { background: var(--team-accent); }
+
+.journey-card { margin-bottom: 16px; padding: 22px; border: 1px solid var(--border); border-radius: 10px; background: #1b1b1b; transition: border-color 180ms ease, opacity 180ms ease; }
+
+.journey-level.is-unlocked .journey-card { border-color: color-mix(in srgb, var(--team-accent), transparent 55%); }
+
+.journey-level.is-locked .journey-card { opacity: .52; }
+
+.journey-card > header { display: flex; justify-content: space-between; }
+
+.journey-card > header span { color: var(--team-accent); font: 700 9px ui-monospace, monospace; text-transform: uppercase; }
+
+.journey-card > header em { padding: 4px 7px; border-radius: 999px; background: #282d2a; color: #89968e; font: 8px ui-monospace, monospace; }
+
+.journey-level.is-complete .journey-card > header em { background: color-mix(in srgb, var(--team-accent), transparent 87%); color: var(--team-accent); }
+
+.journey-card__body { display: grid; grid-template-columns: auto 1fr; gap: 15px; align-items: start; margin-top: 25px; }
+
+.journey-card__body > svg { width: 35px; height: 35px; padding: 8px; border-radius: 8px; background: #272c29; color: var(--team-accent); }
+
+.journey-card h2 { margin: 0 0 7px; font-size: 20px; }
+
+.journey-card__body p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
+
+.journey-card > footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 22px; padding-top: 15px; border-top: 1px solid var(--border); }
+
+.journey-card > footer > span { display: flex; gap: 7px; align-items: center; color: #929f97; font-size: 8px; }
+
+.journey-card > footer > span svg { width: 12px; color: var(--team-accent); }
+
+.journey-card button { display: flex; gap: 7px; align-items: center; padding: 8px 10px; border: 1px solid color-mix(in srgb, var(--team-accent), transparent 55%); border-radius: 8px; background: transparent; color: var(--team-accent); font-size: 8px; font-weight: 700; cursor: pointer; }
+
+.journey-card button:hover:not(:disabled) { background: color-mix(in srgb, var(--team-accent), transparent 90%); }
+
+.journey-card button:disabled { border-color: var(--border); color: #6d7771; cursor: not-allowed; }
+
+.journey-card button svg { width: 11px; }
+
+
+
+/* MOAPT task journey */.moapt-journey-hero { position: relative; overflow: hidden; min-height: 250px; background: linear-gradient(125deg, #1a1d1b 0%, #20241f 62%, #29251f 100%); }
+
+.moapt-journey-hero::after { position: absolute; right: 29%; bottom: -90px; width: 1px; height: 330px; background: linear-gradient(transparent, var(--team-accent), transparent); content: ''; transform: rotate(34deg); }
+
+.moapt-journey-hero > div { position: relative; z-index: 1; }
+
+.moapt-journey-track { max-width: 1040px; margin-top: 42px; }
+
+.moapt-journey-level { min-height: 0; }
+
+.moapt-journey-level + .moapt-journey-level { padding-top: 8px; }
+
+.moapt-journey-card { margin-bottom: 20px; padding: 0; overflow: hidden; background: linear-gradient(145deg, #1c1d1c, #181918); }
+
+.moapt-journey-card > header { min-height: 44px; align-items: center; padding: 0 22px; border-bottom: 1px solid var(--border); background: rgb(255 255 255 / 1.5%); }
+
+.moapt-journey-card .journey-card__body { padding: 25px 22px 20px; }
+
+.moapt-journey-card .journey-card__body > svg { width: 42px; height: 42px; padding: 11px; border: 1px solid color-mix(in srgb, var(--team-accent), transparent 68%); border-radius: 8px; background: color-mix(in srgb, var(--team-accent), transparent 91%); color: var(--team-accent); }
+
+.moapt-journey-card .journey-card__body h2 { margin-top: 0; font-size: 24px; }
+
+.moapt-journey-card .journey-card__body p { max-width: 680px; font-size: 10px; line-height: 1.6; }
+
+.journey-task-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 22px 22px; }
+
+.journey-task { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 0 11px; align-content: start; padding: 15px; border: 1px solid var(--border); border-radius: 8px; background: #191a19; transition: border-color 150ms ease, background 150ms ease; }
+
+.journey-task:hover { border-color: #465048; background: #1c1e1c; }
+
+.journey-task.is-checked { border-color: color-mix(in srgb, var(--team-accent), transparent 60%); background: color-mix(in srgb, var(--team-accent), #191a19 94%); }
+
+.journey-card .journey-task__check { display: grid; width: 28px; height: 28px; place-items: center; padding: 0; border: 1px solid #4b534e; border-radius: 6px; background: #151615; color: transparent; transition: border-color 140ms ease, background 140ms ease, box-shadow 140ms ease; }
+
+.journey-card .journey-task__check:hover:not(:disabled) { border-color: var(--team-accent); background: color-mix(in srgb, var(--team-accent), #151615 88%); box-shadow: 0 0 0 3px color-mix(in srgb, var(--team-accent), transparent 88%); }
+
+.journey-task__check:focus-visible, .journey-task > a:focus-visible { outline: 2px solid var(--team-accent); outline-offset: 2px; }
+
+.journey-task__check:disabled { cursor: not-allowed; opacity: .55; }
+
+.journey-card .journey-task.is-checked .journey-task__check { border-color: var(--team-accent); background: var(--team-accent); color: #382012; }
+
+.journey-card .journey-task.is-checked .journey-task__check:hover:not(:disabled) { background: color-mix(in srgb, var(--team-accent), white 12%); }
+
+.journey-card .journey-task__check svg { display: block; width: 14px; height: 14px; stroke-width: 3; }
+
+.journey-task__content { min-width: 0; }
+
+.journey-task__content > strong { display: block; color: #dce3de; font-size: 10px; line-height: 1.45; }
+
+.journey-task__content > p { margin: 7px 0 0; color: #8f9a93; font-size: 9px; line-height: 1.65; }
+
+.journey-task__commands { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+
+.journey-task__commands code { max-width: 100%; padding: 5px 7px; overflow-wrap: anywhere; border: 1px solid #343b36; border-radius: 5px; background: #121312; color: #b9c6be; font-size: 8px; line-height: 1.4; }
+
+.journey-task__content > small { display: grid; grid-template-columns: 15px 1fr; gap: 7px; margin-top: 12px; padding-top: 10px; border-top: 1px solid #2c312e; color: #8c978f; font-size: 8px; line-height: 1.55; }
+
+.journey-task__content > small svg { width: 14px; color: var(--team-accent); }
+
+.journey-task__content > small span { display: grid; gap: 3px; }
+
+.journey-task__content > small b { color: #c5cec8; font-size: 7px; letter-spacing: 0; text-transform: uppercase; }
+
+.journey-task > a { display: inline-flex; grid-column: 2; gap: 6px; width: fit-content; align-items: center; margin-top: 12px; color: var(--team-accent); font-size: 8px; font-weight: 700; text-decoration: none; }
+
+.journey-task > a:hover { color: #f2f6f3; }
+
+.journey-task > a svg { width: 12px; height: 12px; }
+
+.moapt-journey-card > footer { margin: 0; padding: 17px 22px; background: #161716; }
+
+.moapt-journey-card > footer > span { max-width: 650px; line-height: 1.5; }
+
+.moapt-journey-card > footer > button { flex: 0 0 auto; }

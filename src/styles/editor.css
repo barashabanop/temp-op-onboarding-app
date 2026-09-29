@@ -1,0 +1,46 @@
+/* In-page authoring. Editing happens in the real layout, so these rules add
+   affordances around the page rather than restyling the content itself. */
+
+.page-editor-bar { position: sticky; top: 0; z-index: 4; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 10px; margin-bottom: 18px; padding: 10px 0; background: var(--bg); }
+.page-editor-bar__state { display: inline-flex; align-items: center; gap: 8px; margin-right: auto; color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.page-editor-bar__state svg { width: 15px; }
+.page-editor-bar .button { min-height: 38px; padding: 0 16px; font-size: 12px; }
+.page-editor-bar .button svg { width: 14px; }
+.page-editor-bar__message { margin: 0 0 18px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); color: var(--muted-strong); font-size: 13px; }
+
+/* The field inherits its slot's typography so a heading being edited keeps
+   the size, weight, and colour it will have once the change is saved. */
+.editable-text { display: block; width: 100%; padding: 2px 6px; border: 1px dashed var(--border-strong); border-radius: 6px; background: rgb(255 255 255 / 3%); color: inherit; font: inherit; letter-spacing: inherit; line-height: inherit; text-transform: inherit; overflow: hidden; resize: none; }
+.editable-text::placeholder { color: var(--muted); opacity: .55; }
+.editable-text:hover { border-color: var(--muted); }
+.editable-text:focus { border-style: solid; border-color: var(--accent); outline: none; background: rgb(131 238 190 / 8%); }
+
+/* An edited block gains a hover target for its tools without shifting the
+   surrounding layout, so the page keeps the proportions it renders with. */
+.page-editing--active .authored-block,
+.page-editing--active .authored-block__definition,
+.page-editing--active .page-header { position: relative; }
+
+.block-tools { position: absolute; z-index: 3; top: 4px; right: 4px; display: flex; gap: 2px; padding: 3px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-raised); opacity: 0; transition: opacity 140ms ease; }
+.authored-block:hover > .block-tools,
+.authored-block__definition:hover > .block-tools,
+.block-tools:focus-within { opacity: 1; }
+/* A container and its first child would otherwise share the same corner. */
+.page-editing--active .authored-block--has-children > .block-tools { top: -13px; right: 10px; }
+.block-tools button { display: inline-flex; width: 24px; height: 24px; align-items: center; justify-content: center; padding: 0; border: 0; border-radius: 999px; background: transparent; color: var(--muted); cursor: pointer; }
+.block-tools button:hover { background: var(--surface-soft); color: var(--text); }
+.block-tools button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.block-tools__remove:hover { color: #ff9c8f; }
+.block-tools svg { width: 14px; height: 14px; }
+
+/* Monospaced bodies keep their format while being edited. */
+.authored-block__copy--monospaced .editable-text { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+
+/* The page heading's field spans the heading box rather than the text run. */
+.page-editing--active .page-header .eyebrow,
+.page-editing--active .page-header h1,
+.page-editing--active .page-header__description,
+.page-editing--active .authored-block__label,
+.page-editing--active .authored-block__header h2,
+.page-editing--active .authored-block__header h3,
+.page-editing--active .authored-block__definition dt { display: block; }

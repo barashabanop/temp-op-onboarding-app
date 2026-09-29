@@ -1,0 +1,20 @@
+/* Application frame, content bounds, and footer layout. */
+.app-shell { min-height: 100vh; }
+
+.main-content { min-height: 100vh; margin-left: var(--sidebar-width); transition: margin-left 220ms ease; }
+
+.content-frame { width: min(100%, var(--content-max)); min-height: calc(100vh - 70px); margin: 0 auto; padding: clamp(52px, 8vw, 112px) clamp(28px, 7vw, 104px) 80px; }
+
+.site-footer { display: flex; width: min(100%, var(--content-max)); margin: 0 auto; justify-content: space-between; padding: 22px clamp(28px, 7vw, 104px); border-top: 1px solid var(--border); color: #808082; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.main-content { background: var(--bg); }
+
+.content-frame { min-height: calc(100vh - 56px); padding-top: clamp(48px, 6vw, 76px); }
+
+.site-footer { border-color: var(--border); }
+
+
+
+/* Reference screen layouts */.content-frame { padding: 40px clamp(30px, 4vw, 46px) 72px; }
+
+.site-footer { display: none; }

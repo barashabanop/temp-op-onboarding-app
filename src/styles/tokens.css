@@ -1,0 +1,21 @@
+/* Effective design and layout tokens. Team pages override --team-accent inline. */
+:root {
+  color-scheme: dark;
+  font-family: "Montserrat", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --bg: #131313;
+  --surface: #1b1b1c;
+  --surface-raised: #202020;
+  --surface-soft: #303532;
+  --border: #3e4943;
+  --border-strong: #4d5952;
+  --text: #e5e2e1;
+  --muted: #bdcac1;
+  --muted-strong: #d5ded8;
+  --accent: #83eebe;
+  --accent-dark: #003825;
+  --sidebar-width: 267px;
+  --sidebar-collapsed: 78px;
+  --content-max: 1180px;
+}
